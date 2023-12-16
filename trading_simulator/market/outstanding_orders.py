@@ -24,6 +24,28 @@ class OutstandingOrders:
         # Then concatenate
         self.sell_orders = pd.concat([self.sell_orders, new_order], ignore_index=True)
 
+    def cancel_orders(self, quantity):
+        quantity_cancelled = 0
+        cancelled_indices = []
+
+        for ind, row in self.sell_orders.iterrows():
+            if quantity_cancelled + row['quantity'] > quantity:
+                # Adjust the quantity of the current row if adding it exceeds the target quantity
+                excess = quantity_cancelled + row['quantity'] - quantity
+                self.sell_orders.at[ind, 'quantity'] -= excess
+                quantity_cancelled = quantity  # Set to exact target quantity
+                break
+
+            quantity_cancelled += row['quantity']
+            cancelled_indices.append(ind)
+
+            if quantity_cancelled == quantity:
+                break
+
+        self.sell_orders.drop(cancelled_indices, inplace=True)
+        self.min_value = self.sell_orders['strike_price'].min() if not self.sell_orders.empty else None
+        return quantity_cancelled
+
     def redeem_orders(self, current_price, current_date):
         """
         Redeem all orders where the price is above the current price. Assumes there is adequate liquidity for all orders
@@ -44,8 +66,6 @@ class OutstandingOrders:
 
             return orders_sold_df
         return None
-
-
 
     def __str__(self):
         return str(self.sell_orders)

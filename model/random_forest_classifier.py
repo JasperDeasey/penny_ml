@@ -8,9 +8,8 @@ from data.database import sqlite_db
    
 
 class RandomForestModel:
-    def __init__(self, training_df, testing_df, n_estimators=100):
+    def __init__(self, n_estimators=100):
         self.model = RandomForestClassifier(n_estimators=n_estimators)
-        self.train(training_df, testing_df)
 
     def train(self, train_df, test_df):
         print('Training model...')
@@ -67,6 +66,7 @@ class RandomForestModel:
 
         db = sqlite_db.LocalDatabase()
         db.replace_df(test_df, 'model_prediction')
+        return test_df
 
     def predict(self, X):
         probabilities = self.model.predict_proba(X)

@@ -5,6 +5,7 @@ from data.database.sqlite_db import LocalDatabase
 import time
 from trading_simulator.portfolio.portfolio import Portfolio
 from trading_simulator.market.trade import Trade
+from model.random_forest_classifier import Prediction
 
 warnings.filterwarnings('ignore', category=RuntimeWarning)
 
@@ -23,7 +24,7 @@ class TradingSimulator:
         trades_df.fillna(0, inplace=True)
 
         # Sort the DataFrame by 'Time' in descending order for each date
-        trades_df = trades_df.sort_values(['Time'], ascending=[True]).reset_index()
+        trades_df = trades_df.sort_values(['Time', 'PROBABILITY'], ascending=[True, False]).reset_index()
 
         return trades_df
 
@@ -35,8 +36,8 @@ class TradingSimulator:
             row = self.simulation_df.iloc[self.current_index]
             self.current_index += 1
             current_trade = Trade(row['Time'], row['ticker'], row['vwap'], row['volume'], pd.DataFrame([row]))
-
-            return current_trade
+            prediction = Prediction(row['MODEL_PREDICTION'], row['PROBABILITY'])
+            return current_trade, prediction
         else:
             raise StopIteration
 

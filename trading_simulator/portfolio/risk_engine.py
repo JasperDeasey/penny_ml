@@ -37,9 +37,9 @@ class RiskEngine:
         ticker_returns_df = ticker_returns_df.dropna()
         portfolio_return, ticker_returns_df = portfolio_return.align(ticker_returns_df, join='inner')
 
-        # Check for constant values
-        if portfolio_return.std() == 0 or ticker_returns_df.std() == 0:
-            print("One of the series has constant values")
+        # # Check for constant values
+        # if portfolio_return.std() == 0 or ticker_returns_df.std() == 0:
+        #     print("One of the series has constant values")
 
         correlation = portfolio_return.corr(ticker_returns_df)
         if pd.isna(correlation):

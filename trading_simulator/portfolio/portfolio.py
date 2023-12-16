@@ -27,8 +27,12 @@ class Portfolio:
         self._holdings['cash']['quantity'] += cash_transacted
         sold_df['weighted_price'] = sold_df['purchase_price'] * sold_df['quantity']
         avg_price = sold_df['weighted_price'].sum() / quantity_sold
-        print(f'sold {quantity_sold} of {trade.get_ticker()} @ {trade.get_price()} vs. avg price of {avg_price}')
+        print(f'{trade.get_time().strftime("%m-%d %H:%M")}  | sold {quantity_sold} of {trade.get_ticker()} @ {trade.get_price()} vs. avg price of {avg_price}')
         self.update_trade_log(trade, quantity_sold, cash_transacted, prediction)
+
+    def cancel_sell_orders(self, trade, quantity):
+        quantity_cancelled = self._holdings[trade.get_ticker()]['sell_orders'].cancel_orders(quantity)
+        print(f'cancelled sell orders for {quantity_cancelled} units')
 
     def create_sell_order(self, ticker, strike_price, quantity, purchase_price, expiry_date):
         self._holdings[ticker]['sell_orders'].add_sell_order(strike_price, quantity, purchase_price, expiry_date)
@@ -40,7 +44,10 @@ class Portfolio:
         self._trade_log.append([trade.get_time(), trade.get_ticker(), self.get_cash(), self.get_total_value(), self.get_ticker_quantity(trade.get_ticker()), quantity_transacted, cash_transacted, trade.get_price(), prediction.prediction, prediction.probability])
 
     def get_trade_log(self):
-        return pd.DataFrame(self._trade_log)
+        columns = ['Time', 'ticker', 'Cash', 'Market Value', 'Ticker Quantity', 'Transacted Quantity', 'Transacted Cash', 'vwap', 'Prediction', 'Probability']
+        df = pd.DataFrame(self._trade_log, columns=columns)
+        df['Time'] = pd.to_datetime(df['Time'])
+        return df
 
     def add_ticker_to_holdings(self, ticker, quantity, price):
         """Add or update a ticker in the portfolio."""
@@ -110,13 +117,11 @@ class Portfolio:
             transaction_quantity = math.floor(self.get_cash() / trade.get_price())
             transaction_value = transaction_quantity * trade.get_price()
 
-        self.change_ticker_quantity(trade.get_ticker(), transaction_quantity)
-        self.change_cash(-1*transaction_value)
-
-        self.update_trade_log(trade, transaction_quantity, -1*transaction_value, prediction)
-        self.create_sell_order(trade.get_ticker(), trade.get_price() * 1.1, transaction_quantity, trade.get_price(), trade.get_time() + pd.Timedelta(days=10))
-
         if transaction_value != 0:
+            self.change_ticker_quantity(trade.get_ticker(), transaction_quantity)
+            self.change_cash(-1 * transaction_value)
+            self.update_trade_log(trade, transaction_quantity, -1 * transaction_value, prediction)
+            self.create_sell_order(trade.get_ticker(), trade.get_price() * 1.1, transaction_quantity, trade.get_price(),trade.get_time() + pd.Timedelta(days=10))
             print(
                 f'{trade.get_time().strftime("%m-%d %H:%M")}  | '
                 f'BUY : ${transaction_value:>4.0f}  |'
@@ -148,12 +153,11 @@ class Portfolio:
             transaction_quantity = self.get_ticker_quantity(trade.get_ticker())
             transaction_value = transaction_quantity * trade.get_price()
 
-        self.change_ticker_quantity(trade.get_ticker(), -1*transaction_quantity)
-        self.change_cash(transaction_value)
-
-        self.update_trade_log(trade, -1*transaction_quantity, transaction_value, prediction)
-
-        if transaction_value != 0:
+        if transaction_quantity != 0:
+            self.change_ticker_quantity(trade.get_ticker(), -1 * transaction_quantity)
+            self.change_cash(transaction_value)
+            self.cancel_sell_orders(trade, -1 * transaction_quantity)
+            self.update_trade_log(trade, -1 * transaction_quantity, transaction_value, prediction)
             print(
                 f'{trade.get_time().strftime("%m-%d %H:%M")}  | '
                 f'SELL: ${transaction_value:>4.0f}  |'
