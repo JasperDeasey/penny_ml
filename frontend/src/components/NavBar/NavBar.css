@@ -1,0 +1,38 @@
+/* NavBar.css */
+nav {
+background-color: #333;
+padding: 8px 0; /* Reduced padding for less height */
+position: sticky;
+top: 0;
+width: 100%; /* Full width */
+z-index: 1000;
+}
+
+nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+nav ul li {
+margin: 0 15px;
+}
+
+nav ul li a {
+color: white;
+text-decoration: none;
+font-size: 16px;
+font-weight: bold; /* Make text bold */
+padding: 5px 10px;
+transition: background-color 0.3s;
+cursor: pointer; /* Change cursor to pointer */
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+background-color: #555;
+border-radius: 5px;
+}

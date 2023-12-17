@@ -1,0 +1,18 @@
+  .implementation-subsection {
+    margin-bottom: 20px;
+  }
+  
+  .implementation-subsection h3 {
+    margin-top: 0;
+  }
+  
+  .implementation-visual {
+    margin-top: 10px;
+  }
+  
+  .implementation-visual img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
