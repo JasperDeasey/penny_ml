@@ -1,0 +1,55 @@
+/* Performance.css */
+.performance-section {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .performance-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  
+  .performance-commentary, .performance-data {
+    flex: 1 1 300px; /* Each takes half space, but not less than 300px */
+  }
+  
+  .performance-graph,
+  .performance-table {
+    width: 100%;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px; /* Reduced font size */
+  }
+  
+  table, th, td {
+    border: 1px solid black;
+    text-align: left;
+  }
+  
+  th, td {
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #333;
+    color: white;
+  }
+  
+  @media (max-width: 600px) { /* Adjusted for a total minimum width of 600px */
+    .performance-content {
+      flex-direction: column;
+    }
+  
+    .performance-commentary,
+    .performance-data {
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+  

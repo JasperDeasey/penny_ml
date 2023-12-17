@@ -1,0 +1,25 @@
+  .contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .contact-item .icon {
+    margin-right: 10px;
+  }
+  
+  a {
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+.icon {
+    margin-right: 10px;
+    color: grey; /* Example color - adjust as needed */
+  }
+  

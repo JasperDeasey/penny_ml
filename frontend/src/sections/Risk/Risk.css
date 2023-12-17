@@ -1,0 +1,25 @@
+.risk-section {
+    margin: 20px;
+    padding: 20px;
+    /* background-color: #f5f5f5; */
+    border-radius: 8px;
+  }
+  
+  .risk-subsection {
+    margin-bottom: 20px;
+  }
+  
+  .risk-subsection h3 {
+    margin-top: 0;
+  }
+  
+  .risk-visual {
+    margin-top: 10px;
+  }
+  
+  .risk-visual img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  

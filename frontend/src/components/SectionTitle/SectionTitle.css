@@ -1,0 +1,19 @@
+.section-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .section-title h2 {
+    margin: 0;
+    padding-right: 10px;
+    /* background: white; */
+    z-index: 1; /* Ensures the line goes under the text */
+  }
+  
+  .title-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: white;
+  }
+  
