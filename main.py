@@ -11,25 +11,28 @@ from model.random_forest_classifier import Prediction
 # All data is based off of minute-trading data from Polygon.io
 # historical_data_gatherer.gather_historic_data() # <-- uncomment if need to restart and get data again
 db = sqlite_db.LocalDatabase()
-historic_trades_df = db.query("SELECT * FROM historical_trades")
+historic_trades_df = db.query("SELECT * FROM historical_trades WHERE strftime('%Y', Time) < '2023'")
 historic_trades_df['Time'] = pd.to_datetime(historic_trades_df['Time'])
 historic_trades_df = historic_trades_df.sort_values(['Time'], ascending=[True]).reset_index()
+pre_2023_trades_training_df = historic_trades_df
 
 # --- MODEL ---
 # Create model, which predicts if a stock will go up or down 10% in the next 5 days
-pre_2023_trades_training_df = historic_trades_df[historic_trades_df['Time'].dt.year < 2023].copy()
-ytd_2023_trades_df = historic_trades_df[historic_trades_df['Time'].dt.year == 2023].copy()
-model = RandomForestModel()
-prediction_df = model.train(train_df=pre_2023_trades_training_df, test_df=ytd_2023_trades_df)
-
+# pre_2023_trades_training_df = historic_trades_df[historic_trades_df['Time'].dt.year < 2023].copy()
+# ytd_2023_trades_df = historic_trades_df[historic_trades_df['Time'].dt.year == 2023].copy()
+# model = RandomForestModel()
+# prediction_df = model.train(train_df=pre_2023_trades_training_df, test_df=ytd_2023_trades_df)
+# prediction_df = db.query("SELECT * FROM model_prediction")
+# prediction_df['Time'] = pd.to_datetime(prediction_df['Time'])
 
 # --- RISK ENGINE ---
 # Create a risk engine, which calculates return correlations based on pre-2023 data
-pre_2023_trades_training_df['Time'] = pd.to_datetime(pre_2023_trades_training_df['Time'])
 pre_2023_trades_training_df['Date'] = pre_2023_trades_training_df['Time'].dt.date
 pre_2023_trade_pivot = pre_2023_trades_training_df.pivot_table(index='Date', columns='ticker', values='vwap', aggfunc='last')
 pre_2023_returns_df = pre_2023_trade_pivot.pct_change(fill_method=None)
+db.replace_df(pre_2023_returns_df, 'pre_2023_returns_df')
 risk_engine = RiskEngine(pre_2023_returns_df)
+exit(1000)
 
 
 # --- PORTFOLIO ---
