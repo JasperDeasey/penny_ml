@@ -10,14 +10,15 @@ const Performance = () => {
       <div className="performance-content">
         <div className="performance-commentary">
           <p>
-            Here is where the performance commentary will go. It can be a detailed text 
-            explaining the performance metrics, market conditions, and other relevant information.
+            This strategy experienced strong returns versus all benchmarks, at 175% return with a $100,000 portfolio.
+            It also had strong risk-adjusted returns, with Sharpe and Sortino ratios well above that of the benchmarks.
+            It was able to predict a 10% rise correctly X% of the time, and a 10% drop X% of the time.
           </p>
-        </div>
-        <div className="performance-data">
-          <div className="performance-graph">
-            <ReturnsChart />
-          </div>
+          <p>
+            The strategy (acts?) unrelated to the benchmark, with an extremely low beta and correlation.
+            It would be a strong diversifier to any portfolio; however, it is bound by AUM constraints, and would recieve diminishing returns as AUM rises.
+            An AUM of $1M, for example, generates returns of __%, and an AUM of $1B generates a return of __%.
+          </p>
           <div className="performance-table">
             <table>
               <thead>
@@ -39,6 +40,11 @@ const Performance = () => {
                 <tr><td>Correlation of Penny ML vs.</td><td>1.0</td><td>0.1</td><td>0.3</td><td>0.3</td></tr>
               </tbody>
             </table>
+          </div>
+        </div>
+        <div className="performance-data">
+          <div className="performance-graph">
+            <ReturnsChart />
           </div>
         </div>
       </div>

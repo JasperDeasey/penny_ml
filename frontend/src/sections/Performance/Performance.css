@@ -1,4 +1,8 @@
 /* Performance.css */
+.section{
+  height: 100%;
+}
+
 .performance-section {
     margin: 20px;
     padding: 20px;
@@ -8,11 +12,18 @@
   .performance-content {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: stretch; /* Change to stretch to fill the height */
+    height: 100%;
   }
   
-  .performance-commentary, .performance-data {
+  .performance-commentary {
     flex: 1 1 300px; /* Each takes half space, but not less than 300px */
+  }
+
+  .performance-data {
+    flex: 1 1 300px;
+    align-items: stretch; /* Change to stretch to fill the height */
+    height: 100%;
   }
   
   .performance-graph,

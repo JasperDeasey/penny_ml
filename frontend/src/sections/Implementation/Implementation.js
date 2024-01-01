@@ -22,9 +22,8 @@ const Implementation = () => {
       {/* Model */}
       <div className="implementation-subsection">
         <h3>Model</h3>
-        <p>
-          Our investment model leverages advanced algorithms and machine learning techniques...
-        </p>
+        <p>The Random Forest classifier is an ideal choice for our project that predicts whether a stock will rise or fall by 10% based on technical indicators. This powerful model thrives in the complex and unpredictable world of stock market data, adeptly handling non-linear relationships and numerous variables. Its ensemble approach, building multiple decision trees, significantly reduces the risk of overfitting – a common challenge in financial modeling. </p>
+        <p> Random Forest's key strength lies in its ability to process a wide array of technical indicators, determining those most impactful in predicting substantial price shifts. While it operates as a 'black box', the insights gained on the importance of different indicators are invaluable, guiding the ongoing refinement of our predictive model. This makes Random Forest not only robust and adaptable but also a highly effective tool for navigating the complexities of short-term stock price movements. </p>
         <div className="implementation-visual">
           {/* Placeholder for Model Visual */}
           <img src="path-to-model-visual.jpg" alt="Model Visual" />

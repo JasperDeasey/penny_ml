@@ -8,6 +8,7 @@ import Performance from './sections/Performance';
 import Risk from './sections/Risk';
 import Implementation from './sections/Implementation';
 import Contact from './sections/Contact';
+import Limitations from './sections/Limitations/Limitations';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <InvestmentStrategy />
         <Performance />
         <Risk />
-        <Implementation />
+        {/* <Implementation /> */}
+        <Limitations />
         <Contact />
       </header>
     </div>

@@ -70,7 +70,7 @@ const ReturnsChart = () => {
   };
 
   return (
-    <div style={{ height: '300px', width: '600px' }}>
+    <div style={{ height: '500px', width: '600px' }}>
       <Line data={data} options={options} />
     </div>
   );

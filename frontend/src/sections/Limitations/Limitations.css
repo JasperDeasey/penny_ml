@@ -5,17 +5,6 @@
     border-radius: 8px;
   }
   
-  .subsection {
-    display: flex;
-    align-items: start;
-    justify-content: space-around;
-    margin-bottom: 20px;
-  }
-
-  h3 {
-    margin-top: 0;
-  }
-  
   .text-content {
     flex-basis: 45%;
   }
@@ -26,7 +15,6 @@
   }
   
   .visual-content img {
-    min-width: 300px;
     max-width: 100%;
     height: auto;
     border-radius: 8px;

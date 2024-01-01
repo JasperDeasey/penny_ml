@@ -1,6 +1,7 @@
 import React from 'react';
 import './Overview.css';
 import SectionTitle from '../../components/SectionTitle';
+import OverviewChart from '../../components/OverviewChart';
 
 const Overview = () => {
   return (
@@ -9,28 +10,30 @@ const Overview = () => {
       <div className="overview-content">
         <div className="overview-text">
           <p>
-            Our Quantitative Equity Fund leverages advanced machine learning algorithms 
-            to analyze market trends and make data-driven investment decisions. 
-            The primary goal is to maximize returns while managing risks through 
-            diversified portfolios.
+            In 2019, I made an investment into a micro-cap company when it went public. 
+            After a meteoric rise its first month on the market, it experienced an even more dramatic fall in value, now being worth next to nothing.
+            After its steep sell-off, I still watch of it, despite it now (unfortunately) being worth next to nothing.
           </p>
           <p>
-            The app's core functionality includes real-time market analysis, 
-            automated trading strategies, and predictive analytics for future 
-            market movements. Since its inception, the fund has achieved a 
-            performance rate of 15% annual growth, with a risk factor maintained 
-            at a moderate level of 2.5% volatility.
+            I noticed that on any given day, the stock will rise and fall dramatically - often experiencing swings of 20% within a single day. 
+            Looking into other companies of similar size yielded similar results.
+            In my job as an investment analyst, I became used to 20% swings in value over a year - a swing in value that large over just a day seemed unreasonable.
           </p>
           <p>
-            This platform was built to democratize access to sophisticated 
-            investment strategies, previously available only to institutions 
-            and high-net-worth individuals. By harnessing the power of 
-            machine learning, we offer an innovative approach to personal 
-            investing.
+          This market is very different than where large investors traditionally allocate - it is defined by small, illiquid transaction sizes and risky companies.
+          These constraints (particularily the small transactoins sizes and illiquidity) may make them impractical for large investors, but is there buying opportunitis for a smaller investor?
+          </p>
+          <p>
+            That's what this project seeks to solve.
+          </p>
+          <p>
+            Using minute-by-minute transaction data and machine learning, this projects aims to predict if a stock will quickly rise or fall in value.
+            Using those predictions, trades are made - within the liquidity constraints of the market, and in a risk aware way - to build a portfolio.
+            That portfolio is then optimized and tracked over time, to see if this strategy is a realistic strategy for securing strong risk-adjusted returns.
           </p>
         </div>
         <div className="overview-visual">
-          /* <img src="path-to-your-image.jpg" alt="Fund Overview Visual" /> */
+          <OverviewChart />
         </div>
       </div>
     </div>
