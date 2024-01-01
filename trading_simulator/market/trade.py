@@ -4,7 +4,7 @@ import math
 
 class Trade:
     def __init__(self, time, ticker, price, volume, row_df):
-        self._time = time
+        self._time = pd.to_datetime(time)
         self._ticker = ticker
         self._price = price
         self._volume = volume

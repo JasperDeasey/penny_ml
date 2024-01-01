@@ -1,9 +1,14 @@
 import pandas as pd
 
+
+MAX_PRICE = 1000
+
+
 class OutstandingOrders:
+
     def __init__(self):
         self.sell_orders = pd.DataFrame(columns=['quantity', 'strike_price', 'purchase_price', 'expiry_date'])
-        self.min_value = 1000
+        self.min_value = MAX_PRICE
 
     def add_sell_order(self, strike_price, quantity, purchase_price, expiry_date):
         """
@@ -25,6 +30,7 @@ class OutstandingOrders:
         self.sell_orders = pd.concat([self.sell_orders, new_order], ignore_index=True)
 
     def cancel_orders(self, quantity):
+        quantity = -quantity
         quantity_cancelled = 0
         cancelled_indices = []
 
@@ -32,7 +38,7 @@ class OutstandingOrders:
             if quantity_cancelled + row['quantity'] > quantity:
                 # Adjust the quantity of the current row if adding it exceeds the target quantity
                 excess = quantity_cancelled + row['quantity'] - quantity
-                self.sell_orders.at[ind, 'quantity'] -= excess
+                self.sell_orders.at[ind, 'quantity'] = excess
                 quantity_cancelled = quantity  # Set to exact target quantity
                 break
 
@@ -43,7 +49,8 @@ class OutstandingOrders:
                 break
 
         self.sell_orders.drop(cancelled_indices, inplace=True)
-        self.min_value = self.sell_orders['strike_price'].min() if not self.sell_orders.empty else None
+        self.sell_orders.reset_index(drop=True, inplace=True)
+        self.min_value = self.sell_orders['strike_price'].min() if not self.sell_orders.empty else MAX_PRICE
         return quantity_cancelled
 
     def redeem_orders(self, current_price, current_date):
@@ -54,14 +61,14 @@ class OutstandingOrders:
         current_price (float): The current price of the stock
         """
         if len(self.sell_orders) == 0:
-            return
+            return None
 
         min_date = self.sell_orders.iloc[0]['expiry_date']
         if (self.min_value <= current_price) or (min_date <= current_date):
             orders_sold_df = self.sell_orders[(self.sell_orders['strike_price'] <= current_price) | (self.sell_orders['expiry_date'] <= current_date)]
 
             if len(orders_sold_df) > 0:
-                self.sell_orders = self.sell_orders[(self.sell_orders['strike_price'] > current_price) & (self.sell_orders['expiry_date'] > current_date)]
+                self.sell_orders = self.sell_orders[(self.sell_orders['strike_price'] > current_price) & (self.sell_orders['expiry_date'] > current_date)].reset_index(drop=True)
                 self.min_value = self.sell_orders['strike_price'].min()
 
             return orders_sold_df

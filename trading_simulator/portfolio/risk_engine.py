@@ -98,7 +98,7 @@ class RiskEngine:
         Sell more, the more we own: [0: +], selling much more as weight increases.
         """
         weight = portfolio.get_ticker_weight(trade.get_ticker())
-        weight_scaling_factor = 20
+        weight_scaling_factor = 10
 
         if portfolio.is_buy(prediction):
             weight_factor = 1 - (weight_scaling_factor * weight) ** 2
