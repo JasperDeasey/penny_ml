@@ -12,8 +12,8 @@ class Portfolio:
         self._holdings['cash'] = {'quantity': cash, 'price': 1, 'sell_orders': OutstandingOrders()}
         self._total_value = cash
         self._trade_log = []
-        self._min_buy_probability = 0.5
-        self._min_sell_probability = 0.5
+        self._min_buy_probability = 0.70
+        self._min_sell_probability = 0.60
 
     def redeem_sell_orders(self, trade, prediction):
         sold_df = self._holdings[trade.get_ticker()]['sell_orders'].redeem_orders(trade.get_price(), trade.get_time())
@@ -27,12 +27,12 @@ class Portfolio:
         self._holdings['cash']['quantity'] += cash_transacted
         sold_df['weighted_price'] = sold_df['purchase_price'] * sold_df['quantity']
         avg_price = sold_df['weighted_price'].sum() / quantity_sold
-        print(f'{trade.get_time().strftime("%m-%d %H:%M")}  | sold {quantity_sold} of {trade.get_ticker()} @ {trade.get_price()} vs. avg price of {avg_price}')
+        print(f'\n{trade.get_time().strftime("%m-%d %H:%M")}  | sold {quantity_sold} of {trade.get_ticker()} @ ${trade.get_price() :>.2f} vs. avg price of ${avg_price:>.2f}', end='')
         self.update_trade_log(trade, quantity_sold, cash_transacted, prediction)
 
     def cancel_sell_orders(self, trade, quantity):
         quantity_cancelled = self._holdings[trade.get_ticker()]['sell_orders'].cancel_orders(quantity)
-        print(f'cancelled sell orders for {quantity_cancelled} units')
+        print(f'\ncancelled sell orders for {quantity_cancelled} units', end='')
 
     def create_sell_order(self, ticker, strike_price, quantity, purchase_price, expiry_date):
         self._holdings[ticker]['sell_orders'].add_sell_order(strike_price, quantity, purchase_price, expiry_date)
@@ -79,7 +79,7 @@ class Portfolio:
                 self._total_value += quantity * (price - price_0)
 
         else:
-            print(f"{ticker} not found in portfolio.")
+            print(f"\n{ticker} not found in portfolio.", end='')
 
     def get_ticker_weight(self, ticker):
         """Returns weight of ticker [1, 0]"""
@@ -121,16 +121,16 @@ class Portfolio:
             self.change_ticker_quantity(trade.get_ticker(), transaction_quantity)
             self.change_cash(-1 * transaction_value)
             self.update_trade_log(trade, transaction_quantity, -1 * transaction_value, prediction)
-            self.create_sell_order(trade.get_ticker(), trade.get_price() * 1.1, transaction_quantity, trade.get_price(),trade.get_time() + pd.Timedelta(days=10))
+            self.create_sell_order(trade.get_ticker(), trade.get_price() * 1.1, transaction_quantity, trade.get_price(), trade.get_time() + pd.Timedelta(days=6))
             print(
-                f'{trade.get_time().strftime("%m-%d %H:%M")}  | '
+                f'\n{trade.get_time().strftime("%m-%d %H:%M")}  | '
                 f'BUY : ${transaction_value:>4.0f}  |'
                 f' MV: ${self.get_total_value():>7,.0f}  |'
                 f' CASH: ${self.get_cash():>5,.0f}  |'
                 f' VOL: {transaction_quantity:>5}='
                 f'ideal_value: ${ideal_value:>4.0f} =='
-                f' price(${trade.get_price():>4.1f}) -- '
-                f' ticker: {trade.get_ticker():>3.0f} | {self.get_ticker_quantity(trade.get_ticker()):>4.0f} | {self.get_ticker_weight(trade.get_ticker()) * 100: 3.1f}%'
+                f' price(${trade.get_price():>5.2f}) -- '
+                f' ticker: {trade.get_ticker()} | {self.get_ticker_quantity(trade.get_ticker()):>4.0f} | {self.get_ticker_weight(trade.get_ticker()) * 100: 3.1f}%', end=''
             )
 
     def sell(self, prediction, trade):
@@ -159,12 +159,12 @@ class Portfolio:
             self.cancel_sell_orders(trade, -1 * transaction_quantity)
             self.update_trade_log(trade, -1 * transaction_quantity, transaction_value, prediction)
             print(
-                f'{trade.get_time().strftime("%m-%d %H:%M")}  | '
+                f'\n{trade.get_time().strftime("%m-%d %H:%M")}  | '
                 f'SELL: ${transaction_value:>4.0f}  |'
                 f' MV: ${self.get_total_value():>7,.0f}  |'
                 f' CASH: ${self.get_cash():>5,.0f}  |'
                 f' VOL: {transaction_quantity:>5}='
                 f'ideal_value: ${ideal_value:>4.0f} =='
-                f' price(${trade.get_price():>4.1f}) -- '
-                f' ticker: {trade.get_ticker():>3.0f} | {self.get_ticker_quantity(trade.get_ticker()):>4.0f} | {self.get_ticker_weight(trade.get_ticker()) * 100: 3.1f}%'
+                f' price(${trade.get_price():>5.2f}) -- '
+                f' ticker: {trade.get_ticker()} | {self.get_ticker_quantity(trade.get_ticker()):>4.0f} | {self.get_ticker_weight(trade.get_ticker()) * 100: 3.1f}%', end=''
             )

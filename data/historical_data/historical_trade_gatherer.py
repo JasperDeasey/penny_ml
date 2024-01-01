@@ -174,6 +174,6 @@ def gather_historic_data():
     print('\n -- saved data here to penny_ai.db[historical_trades] -- \n')
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     gather_historic_data()
     
