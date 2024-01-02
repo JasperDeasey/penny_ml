@@ -64,8 +64,13 @@ const ReturnsChart = () => {
     },
     scales: {
       y: {
-        beginAtZero: true,
-      },
+        type: 'logarithmic', // Set Y-axis to logarithmic scale
+        beginAtZero: false,
+        title: {
+          display: true,
+          text: 'Value (logarithmic scale)'
+        },
+      }
     },
   };
 

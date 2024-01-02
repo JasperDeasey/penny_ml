@@ -11,31 +11,18 @@ const Limitations = () => {
       <h4>Market Simulation Assumptions & Limitations</h4>
       <h6>Price/Liquidity Impact</h6>
       <p>
-        ~~ discussion of how these trades would impact the market ~~
+      Trading in micro-cap companies can have a significant impact on the market, especially given their lower liquidity compared to larger-cap stocks.
+      As a result, substantial buy orders can lead to a disproportionate increase in prices due to the limited number of available shares. 
       </p>
       <p>
-        ~~ discussion of how this may ruin the efficacy of the strategy ~~
+        As this strategy was built on the idea of "stealing" trades without impacting the market, this may ruin the efficacy of the strategy.
+        The impact of "stealing" trades will likely have large affect on the market, likely making the strategy less effective than it currently is.
       </p>
       <p>
-        ~~ discussion sell orders and how they make some pretty big assumptions ~~
-      </p>
-      <p>
-        ~~ discussion of how to test ~~
+        This will need to be tested in a real environment in order to simulate real market impact.
+        Starting with a few stocks would be adequate to analyze the impact, without taking too much risk.
       </p>
       
-
-      <h6>Trade Sizes</h6>
-      <p>
-        ~~ discussion of the model trades, including the average trade sizes ~~
-      </p>
-      <p>
-        ~~ analysis of the cost of trade sizes ~~
-      </p>
-      <p>
-        ~~ discussion of how these trades would impact the market ~~
-      </p>
-
-
       <h4>Technical Limitations</h4>
       <h6>A poor man's laptop</h6>
       <p>

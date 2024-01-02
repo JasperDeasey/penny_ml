@@ -8,6 +8,54 @@ from trading_simulator.trading_simulator import TradingSimulator
 from model.random_forest_classifier import Prediction
 import numpy as np
 
+import pandas as pd
+import json
+
+# Load the CSV file
+df = pd.read_csv('trading_simulator/concentration_data.csv')
+
+# Assuming the first row of the CSV is the header with tickers
+# and subsequent rows are the values
+tickers = df.columns.tolist()
+values = df.values.tolist()
+
+# Initialize your JSON structure
+json_data = {
+    "Cash": [],
+    "Top 10 Positions": [],
+    "Remaining Positions": []
+}
+
+# Assuming 'Cash' is always the first column
+for row in values:
+    json_data["Cash"].append(row[0])  # Adding cash values
+
+    # Sort the remaining values (excluding 'Cash') and get their indices
+    sorted_indices = sorted(range(1, len(tickers)), key=lambda i: row[i], reverse=True)
+
+    # Adding top 10 positions
+    top_10_indices = sorted_indices[:10]
+    json_data["Top 10 Positions"].append([tickers[i] + ": " + str(row[i]) for i in top_10_indices])
+
+    # Adding remaining positions if they exist
+    if len(tickers) > 11:
+        remaining_indices = sorted_indices[10:]
+        json_data["Remaining Positions"].append([tickers[i] + ": " + str(row[i]) for i in remaining_indices])
+
+# Specify the path where you want to save the JSON file
+json_file_path = 'frontend/src/data/concentration_data.json'  # Replace with your desired file path
+json_str = json.dumps(json_data, indent=4)
+
+# Write the JSON data to a file
+with open(json_file_path, 'w') as json_file:
+    json_file.write(json_str)
+
+print(f"JSON data saved to {json_file_path}")
+
+
+
+
+
 """
 --------- DATA ---------
 All data is based off of minutely-trading data from Polygon.io

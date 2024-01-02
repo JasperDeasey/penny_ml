@@ -12,7 +12,7 @@ const Overview = () => {
           <p>
             In 2019, I made an investment into a micro-cap company when it went public. 
             After a meteoric rise its first month on the market, it experienced an even more dramatic fall in value, now being worth next to nothing.
-            After its steep sell-off, I still watch of it, despite it now (unfortunately) being worth next to nothing.
+            After its steep sell-off, I still watch of it, despite it now (unfortunately) being worth very little.
           </p>
           <p>
             I noticed that on any given day, the stock will rise and fall dramatically - often experiencing swings of 20% within a single day. 
@@ -21,7 +21,7 @@ const Overview = () => {
           </p>
           <p>
           This market is very different than where large investors traditionally allocate - it is defined by small, illiquid transaction sizes and risky companies.
-          These constraints (particularily the small transactoins sizes and illiquidity) may make them impractical for large investors, but is there buying opportunitis for a smaller investor?
+          These constraints (particularily the small transaction sizes and illiquidity) may make them impractical for large investors, but is there buying opportunitis for a smaller investor?
           </p>
           <p>
             That's what this project seeks to solve.

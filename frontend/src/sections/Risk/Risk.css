@@ -1,47 +1,20 @@
-.risk-section {
-    margin: 20px;
-    padding: 20px;
-    /* background-color: #f5f5f5; */
-    border-radius: 8px;
-  }
+.risk-subsection {
+  margin-bottom: 20px; /* Add spacing between sections */
+}
 
+.risk-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Align items to the top */
+  gap: 20px; /* Add a gap between text and chart */
+}
+
+@media screen and (max-width: 500px) {
   .risk-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    flex-direction: column;
   }
+}
 
-  .risk-commentary, .risk-data {
-    flex: 1 1 300px; /* Each takes half space, but not less than 300px */
-  }
-  
-  .risk-subsection h3 {
-    margin-top: 0;
-  }
-  
-  .risk-visual {
-    margin-top: 10px;
-  }
-  
-  .risk-visual img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .risk-graph,
-  .risk-table {
-    width: 100%;
-  }
-
-  @media (max-width: 600px) { /* Adjusted for a total minimum width of 600px */
-    .risk-content {
-      flex-direction: column;
-    }
-  
-    .risk-commentary,
-    .risk-data {
-      min-width: 100%;
-      max-width: 100%;
-    }
-  }
+.risk-commentary, .risk-data {
+  flex: 1 1 300px; /* Allows both sections to grow and fill the space */
+}
