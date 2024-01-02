@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/penny_ml/static/css/main.e4788c37.css",
-    "main.js": "/penny_ml/static/js/main.6a73a8e5.js",
+    "main.js": "/penny_ml/static/js/main.ffb335fb.js",
     "static/js/787.9e9f4ffd.chunk.js": "/penny_ml/static/js/787.9e9f4ffd.chunk.js",
     "static/media/FlowChart.png": "/penny_ml/static/media/FlowChart.80603fcb045fd9f8afe8.png",
     "static/media/InvestmentThesis.jpg": "/penny_ml/static/media/InvestmentThesis.3da64e0a30956458abfa.jpg",
@@ -15,11 +15,11 @@
     "static/media/logo.svg": "/penny_ml/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/penny_ml/index.html",
     "main.e4788c37.css.map": "/penny_ml/static/css/main.e4788c37.css.map",
-    "main.6a73a8e5.js.map": "/penny_ml/static/js/main.6a73a8e5.js.map",
+    "main.ffb335fb.js.map": "/penny_ml/static/js/main.ffb335fb.js.map",
     "787.9e9f4ffd.chunk.js.map": "/penny_ml/static/js/787.9e9f4ffd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e4788c37.css",
-    "static/js/main.6a73a8e5.js"
+    "static/js/main.ffb335fb.js"
   ]
 }
