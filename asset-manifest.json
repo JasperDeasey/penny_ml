@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/penny_ml/static/css/main.e4788c37.css",
+    "main.js": "/penny_ml/static/js/main.6a73a8e5.js",
+    "static/js/787.9e9f4ffd.chunk.js": "/penny_ml/static/js/787.9e9f4ffd.chunk.js",
+    "static/media/FlowChart.png": "/penny_ml/static/media/FlowChart.80603fcb045fd9f8afe8.png",
+    "static/media/InvestmentThesis.jpg": "/penny_ml/static/media/InvestmentThesis.3da64e0a30956458abfa.jpg",
+    "static/media/Slide3.SVG": "/penny_ml/static/media/Slide3.35b1f7f574ba77aab1db.SVG",
+    "static/media/Slide2.SVG": "/penny_ml/static/media/Slide2.34909d7a145e96019af7.SVG",
+    "static/media/InvestmentThesis.svg": "/penny_ml/static/media/InvestmentThesis.75dc8dd4407b84cf1f31d07b05123a61.svg",
+    "static/media/Slide1.SVG": "/penny_ml/static/media/Slide1.4f406521945edd338c95.SVG",
+    "static/media/Slide5.SVG": "/penny_ml/static/media/Slide5.398d71a95b538f1c994b.SVG",
+    "static/media/Slide4.SVG": "/penny_ml/static/media/Slide4.b0ed4565e73a66386e9d.SVG",
+    "static/media/Slide6.SVG": "/penny_ml/static/media/Slide6.e15bc8ab9697fe82205e.SVG",
+    "static/media/logo.svg": "/penny_ml/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/penny_ml/index.html",
+    "main.e4788c37.css.map": "/penny_ml/static/css/main.e4788c37.css.map",
+    "main.6a73a8e5.js.map": "/penny_ml/static/js/main.6a73a8e5.js.map",
+    "787.9e9f4ffd.chunk.js.map": "/penny_ml/static/js/787.9e9f4ffd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e4788c37.css",
+    "static/js/main.6a73a8e5.js"
+  ]
+}
