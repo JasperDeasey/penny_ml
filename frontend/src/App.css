@@ -49,3 +49,29 @@ p {
     transform: rotate(360deg);
   }
 }
+
+/* risk.css */
+.content {
+  display: flex;
+  flex-direction: column; /* Start with column layout */
+  align-items: center;
+}
+
+.commentary, .chart {
+  width: 100%; /* Full width for both text and visual */
+  margin: 10px 0; /* Adjust margin as needed */
+}
+
+/* Media query for screen width greater than 300px */
+@media screen and (min-width: 800px) {
+  .content {
+      flex-direction: row; /* Switch to row layout for wider screens */
+      justify-content: space-between;
+  }
+
+  .commentary, .chart {
+      flex: 1; /* Equal width for text and visual */
+      margin: 10px; /* Adjust margin as needed */
+      min-width: 200px;
+  }
+}
