@@ -70,12 +70,15 @@ const ReturnsChart = () => {
           display: true,
           text: 'Value (logarithmic scale)'
         },
+
       }
     },
+        responsive: true,
+        maintainAspectRatio: false
   };
 
   return (
-    <div style={{ height: '500px', width: '600px' }}>
+    <div style={{ height: '500px'}}>
       <Line data={data} options={options} />
     </div>
   );

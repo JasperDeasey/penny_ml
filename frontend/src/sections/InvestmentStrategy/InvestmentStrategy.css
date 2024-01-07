@@ -1,36 +1,45 @@
 .investment-strategy-section {
-    padding: 20px;
-    /* background-color: #f5f5f5; */
-    margin: 20px;
-    border-radius: 8px;
-  }
-  
+  padding: 20px;
+  margin: 20px;
+  border-radius: 8px;
+}
+
+.subsection {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap as needed */
+  align-items: stretch;
+  height: 100%;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.text-content {
+  flex: 1 1 300px; /* Initial size but can grow and shrink */
+}
+
+.visual-content {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  height: 100%;
+}
+
+.visual-content img {
+  min-width: 300px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Media Query */
+@media (max-width: 800px) { /* Adjust the value based on your layout needs */
   .subsection {
-    display: flex;
-    align-items: start;
-    justify-content: space-around;
-    margin-bottom: 20px;
+      flex-direction: column;
   }
 
-  h3 {
-    margin-top: 0;
+  .text-content, .visual-content {
+      flex-basis: 100%; /* Each takes full width on smaller screens */
   }
-  
-  .text-content {
-    flex-basis: 45%;
-  }
-  
-  .visual-content {
-    flex-basis: 45%;
-    text-align: center;
-  }
-  
-  .visual-content img {
-    min-width: 300px;
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  /* Additional styling as needed */
-  
+}

@@ -10,17 +10,13 @@ const Risk = () => {
       <SectionTitle title="Risk Analysis" />
 
       {/* Overall Risk */}
-      <div className="risk-subsection">
+      <div className='content'>
+      <div className="commentary">
         <p>
-          Micro-cap companies are inherently riskier than large cap companies, as they typically have less predictable cash flows, higher debt, and are thinly traded.
-          As a result, the largest risks in this portfolio come from too little liquidity (where we would be unable to exit a position), and single-company risk.
+          The largest risks of this strategy come from the illiquidity inherent to the market, paired with the volatile nature of each holding.<br/>
+          There are built-in mitigators for each of these risks, described below:
         </p>
-      </div>
 
-      {/* Liquidity Risk */}
-      <div className="risk-subsection">
-      <div className="risk-content">
-        <div className="risk-commentary">
         <h3>Liquidity Risk</h3>
             <p>
               Liquidity risk refers to the ease with which assets can be converted to cash. 
@@ -42,11 +38,11 @@ const Risk = () => {
               <li><b>Correlation Reduction Factor:</b> There is a preference for minimizing the correlation between assets in the portfolio. If a significant portion of the portfolio is stock A, then there will be low incentive to add more of stock A, as it is correlated to the rest of the portfolio.</li>
               <li><b>Single Security Weight Reduction Factur:</b> There is a preference for buying less of a security, the more of it that is owned. In these simulations, no more of a security would be bought if it were already 5% of the portfolio. It increases exponentially the less is owned.</li>
             </p>
+
           </div>
-        <div className='risk-data'>
+        <div className='chart'>
               <LiquidityChart />
         </div>
-      </div>
       </div>
       </div>
   );

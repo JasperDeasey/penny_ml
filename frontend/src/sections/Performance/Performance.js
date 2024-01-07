@@ -2,13 +2,14 @@ import React from 'react';
 import './Performance.css';
 import SectionTitle from '../../components/SectionTitle';
 import ReturnsChart from '../../components/ReturnsChart';
+import OverviewChart from '../../components/OverviewChart';
 
 const Performance = () => {
   return (
     <div id="performance" className="section">
       <SectionTitle title="Performance" />
-      <div className="performance-content">
-        <div className="performance-commentary">
+      <div className="content">
+        <div className="commentary">
           <p>
             This strategy experienced extremely strong returns versus all benchmarks, at 426% return with a $100,000 portfolio.
             It also had strong risk-adjusted returns, with Sharpe and Sortino ratios well above that of the benchmarks.
@@ -19,7 +20,7 @@ const Performance = () => {
             The weight of a single stock never overwhelmed the portfolio.
             </p>
           <p>
-            The strategy performs largely unrelated to the benchmark, with a low correlation and low beta (relative to its high vol).
+            The strategy performs largely unrelated to the benchmark, with a low correlation and low beta (relative to its high volatility).
           </p>
           
           <div className="performance-table">
@@ -45,10 +46,8 @@ const Performance = () => {
             </table>
           </div>
         </div>
-        <div className="performance-data">
-          <div className="performance-graph">
+          <div className="chart">
             <ReturnsChart />
-          </div>
         </div>
       </div>
     </div>

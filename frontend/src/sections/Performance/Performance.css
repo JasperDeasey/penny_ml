@@ -1,35 +1,27 @@
-/* Performance.css */
-.section{
-  height: 100%;
+.content {
+  display: flex;
+  flex-direction: column; /* Start with column layout */
+  align-items: center;
 }
 
-.performance-section {
-    margin: 20px;
-    padding: 20px;
-    border-radius: 8px;
-  }
+.commentary, .chart {
+  width: 100%; /* Full width for both text and visual */
+  margin: 10px 0; /* Adjust margin as needed */
+}
   
-  .performance-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch; /* Change to stretch to fill the height */
-    height: 100%;
-  }
-  
-  .performance-commentary {
-    flex: 1 1 300px; /* Each takes half space, but not less than 300px */
+/* Media query for screen width greater than 300px */
+@media screen and (min-width: 800px) {
+  .content {
+      flex-direction: row; /* Switch to row layout for wider screens */
+      justify-content: space-between;
   }
 
-  .performance-data {
-    flex: 1 1 300px;
-    align-items: stretch; /* Change to stretch to fill the height */
-    height: 100%;
+  .commentary, .chart {
+      flex: 1; /* Equal width for text and visual */
+      margin: 10px; /* Adjust margin as needed */
+      min-width: 200px;
   }
-  
-  .performance-graph,
-  .performance-table {
-    width: 100%;
-  }
+}
   
   table {
     width: 100%;
@@ -52,13 +44,13 @@
     color: white;
   }
   
-  @media (max-width: 600px) { /* Adjusted for a total minimum width of 600px */
-    .performance-content {
+  @media (max-width: 800px) { /* Adjusted for a total minimum width of 600px */
+    .content {
       flex-direction: column;
     }
   
-    .performance-commentary,
-    .performance-data {
+    .commentary,
+    .chart {
       min-width: 100%;
       max-width: 100%;
     }

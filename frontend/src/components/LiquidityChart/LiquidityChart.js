@@ -44,6 +44,8 @@ const LiquidityChart = () => {
         align: 'center'
       }
     },
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
         beginAtZero: true,
@@ -57,7 +59,7 @@ const LiquidityChart = () => {
   };
 
   return (
-    <div style={{ height: '500px', width: '600px' }}>
+    <div style={{height: '500px' }}>
       <Line data={data} options={options} />
     </div>
   );
