@@ -21,7 +21,7 @@ const Risk = () => {
             <p>
               Liquidity risk refers to the ease with which assets can be converted to cash. 
               If we're unable to exit positions, we would not be able to take advantage of new positions. 
-              Further, if we're expecting a large drop in value we would be unable to sell before that occurs.
+              Further, if we're expecting a large drop in value, we would be unable to sell before that occurs.
             </p>
             <p>
               The liquidity risk is minimized due to the 5-day maximum holding period of each trade.
@@ -34,9 +34,9 @@ const Risk = () => {
             <h3>Single-Company Risk</h3>
             <p>
               As these companies experience extreme price volatility, putting too much weight into any single company subjects the portfolio to risk.
-              This risk is mitigated with the formula that calculates the ideal number of shares, through two mechanisms:
-              <li><b>Correlation Reduction Factor:</b> There is a preference for minimizing the correlation between assets in the portfolio. If a significant portion of the portfolio is stock A, then there will be low incentive to add more of stock A, as it is correlated to the rest of the portfolio.</li>
-              <li><b>Single Security Weight Reduction Factur:</b> There is a preference for buying less of a security, the more of it that is owned. In these simulations, no more of a security would be bought if it were already 5% of the portfolio. It increases exponentially the less is owned.</li>
+              This risk is mitigated with the formula that calculates the ideal number of shares, through two mechanisms: <br/> <br/>
+              <li><b>Correlation Reduction Factor:</b> There is a preference for minimizing the correlation between assets in the portfolio. If a significant portion of the portfolio is stock A, then there will be low incentive to add more of stock A, as it is correlated to the rest of the portfolio.</li><br/>
+              <li><b>Single Security Weight Reduction Factor:</b> There is a preference for buying less of a security, the more of it that is owned. In these simulations, no more of a security would be bought if it were already 5% of the portfolio. It increases exponentially the less is owned.</li>
             </p>
 
           </div>

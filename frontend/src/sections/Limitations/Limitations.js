@@ -16,7 +16,7 @@ const Limitations = () => {
       </p>
       <p>
         As this strategy was built on the idea of "stealing" trades without impacting the market, this may ruin the efficacy of the strategy.
-        The impact of "stealing" trades will likely have large affect on the market, likely making the strategy less effective than it currently is.
+        The impact of "stealing" trades will undoubtedly have affect on the market, likely making the strategy less effective than it currently is.
       </p>
       <p>
         This will need to be tested in a real environment in order to simulate real market impact.

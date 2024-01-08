@@ -20,9 +20,9 @@ const Overview = () => {
             In my job as an investment analyst, I became used to 20% swings in value over a year - a swing in value that large over just a day seemed unreasonable.
           </p>
           <p>
-            I wondered if there was a way to build a strategy out of this behavior - 
+            I wondered if there was a way to build a strategy out of this behavior -
             to analyze the extreme volatility of the micro-cap market, and develop a strategy that typical funds don't investigate due to their size.
-            Then, to build a quantitative fund from the groud up - from alpha indicators to portfolio construction - to get a better understanding of how these funds operate.
+            creating a quantitative fund from scratch, encompassing everything from alpha indicators to portfolio construction, to gain a deeper understanding of how these funds operate.
           </p>
           <p>
             That's what this project seeks to solve.
@@ -30,7 +30,7 @@ const Overview = () => {
           <p>
             Using minute-by-minute transaction data and machine learning, this projects aims to predict if a stock will quickly rise or fall in value.
             Using those predictions, trades are made - within the liquidity constraints of the market, and in a risk aware way - to build a portfolio.
-            That portfolio is then optimized and tracked over time, to see if this strategy is a realistic strategy for generating strong risk-adjusted returns.
+            That portfolio is then optimized and tracked over time, to see if this strategy is a practical method for generating strong risk-adjusted returns.
           </p>
         </div>
         <div className="chart">
