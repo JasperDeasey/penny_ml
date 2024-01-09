@@ -15,17 +15,17 @@ const Overview = () => {
             Even after its steep sell-off, I continued to watch it and was fascinated by its behavior.
           </p>
           <p>
-            I noticed that on any given day, the stock will rise and fall dramatically - often experiencing swings of 20% within a single day. 
+            I noticed that the stock displayed remarkable volatility - often experiencing swings of 20% within a single day. 
             Looking into other companies of similar size yielded similar results.
             In my job as an investment analyst, I became used to 20% swings in value over a year - a swing in value that large over just a day seemed unreasonable.
           </p>
           <p>
             I wondered if there was a way to build a strategy out of this behavior -
             to analyze the extreme volatility of the micro-cap market, and develop a strategy that typical funds don't investigate due to their size.
-            creating a quantitative fund from scratch, encompassing everything from alpha indicators to portfolio construction, to gain a deeper understanding of how these funds operate.
+            Creating a quantitative fund from scratch, encompassing everything from alpha indicators to portfolio construction, to gain a deeper understanding of how these funds operate.
           </p>
           <p>
-            That's what this project seeks to solve.
+            That's the purpose of this project.
           </p>
           <p>
             Using minute-by-minute transaction data and machine learning, this projects aims to predict if a stock will quickly rise or fall in value.
