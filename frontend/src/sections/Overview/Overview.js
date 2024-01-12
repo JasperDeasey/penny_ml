@@ -21,7 +21,7 @@ const Overview = () => {
           </p>
           <p>
             I wondered if there was a way to build a strategy out of this behavior -
-            to analyze the extreme volatility of the micro-cap market, and develop a strategy that typical funds don't investigate due to their size.
+            to analyze the extreme volatility of the micro-cap market, and develop a methodology that typical funds don't investigate due to their size.
             Creating a quantitative fund from scratch, encompassing everything from alpha indicators to portfolio construction, to gain a deeper understanding of how these funds operate.
           </p>
           <p>
